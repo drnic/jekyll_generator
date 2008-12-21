@@ -8,6 +8,8 @@ app_generators/jekyll_generator/jekyll_generator_generator.rb
 app_generators/jekyll_generator/templates/atom.xml
 app_generators/jekyll_generator/templates/config.yml
 app_generators/jekyll_generator/templates/index.markdown
+app_generators/jekyll_generator/templates/_posts
+app_generators/jekyll_generator/templates/_posts/first_post.markdown
 bin/jekyll_generator
 features/development.feature
 features/jekyll.feature
@@ -31,3 +33,4 @@ spec/jekyll_generator_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 tasks/rspec.rake
+
