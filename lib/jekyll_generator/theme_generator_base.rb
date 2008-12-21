@@ -1,5 +1,8 @@
 class JekyllGenerator::ThemeGeneratorBase < RubiGen::Base
-  attr_reader :author, :email, :title, :name, :theme, :github_user
+  # these values are automatically setup by the config.yml file
+  # generated from jekyll_generator_generator.rb
+  # based on options/defaults
+  attr_reader :author, :email, :title, :name, :theme, :github_user, :header_color
 
   def initialize(runtime_args, runtime_options = {})
     super
@@ -16,7 +19,7 @@ class JekyllGenerator::ThemeGeneratorBase < RubiGen::Base
       m.directory 'css'
 
       m.template_copy_each ["default.html", "post.html"], "_layouts"
-      m.file_copy_each ["stylesheet.css"], "css"
+      m.template_copy_each ["stylesheet.css"], "css"
     end
   end
 end

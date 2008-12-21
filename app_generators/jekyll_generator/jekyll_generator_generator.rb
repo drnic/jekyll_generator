@@ -2,15 +2,16 @@ class JekyllGeneratorGenerator < RubiGen::Base
 
   default_options :author => 'FIXME', :email => 'FIXME', :theme => 'plain'
 
-  attr_reader :author, :email, :title, :name, :theme, :github_user
+  attr_reader :author, :email, :title, :name, :theme, :github_user, :header_color
 
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
     @destination_root = File.expand_path(args.shift)
     @name             = base_name
-    @title            = base_name.humanize
     extract_options
+    @title ||= base_name.humanize
+    @header_color ||= random_color
 
     remote_origin_url = `git config remote.origin.url`
     if remote_origin_url.size > 0 && matches = remote_origin_url.match(/git@github.com:(.*)\/(.*).git/)
@@ -18,6 +19,7 @@ class JekyllGeneratorGenerator < RubiGen::Base
       options[:github_user] ||= @github_user
     end
     options[:name] ||= @name
+    options[:header_color] ||= @header_color
   end
 
   def manifest
@@ -52,6 +54,9 @@ EOS
       opts.on("-e", "--email=\"your@email.com\"", String,
               "Your email will be pre-populated throughout website",
               "Default: FIXME") { |v| options[:email] = v }
+      opts.on("--header-color=rrggbb", String,
+              "Color for your theme's header (if theme permits header color selection)",
+              "Default: random") { |v| options[:header_color] = v }
       opts.on("-u", "--github_user=drnic", String,
               "Your github user name",
               "Default: derived from project's origin url") { |v| options[:github_user] = v }
@@ -66,11 +71,23 @@ EOS
     end
 
     def extract_options
-      @author = options[:author]
-      @email  = options[:email]
-      @theme  = options[:theme]
-
-      @title  = options[:title] if options[:title]
+      @author       = options[:author]
+      @email        = options[:email]
+      @theme        = options[:theme]
+      @header_color = options[:header_color]
+      @title        = options[:title]
+    end
+    
+    def random_color
+      colors = ['aaa', # light grey
+        'C7E9B7', # background from http://jsunittest.com/
+        '8DBD82', # background from http://newgem.rubyforge.org/
+        'E9C000', # background from http://drnicjavascript.rubyforge.org/github_badge/
+        '4D606C', # header background from http://disqus.com/people/drnic/
+        'FF6633', # orangy color
+        'FF6633', # dark blue color
+      ]
+      colors[rand(colors.length)]
     end
 
     # Installation skeleton.  Intermediate directories are automatically

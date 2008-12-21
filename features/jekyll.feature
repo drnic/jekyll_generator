@@ -20,6 +20,7 @@ Feature: Generate a working Jekyll-based website
     And contents of file 'website/_layouts/default.html' does match /My Project/
     And contents of file 'website/_layouts/post.html' does match /http:\/\/github.com\/myname\/myproject/
     And file 'website/css/stylesheet.css' is created
+    And contents of file 'website/css/stylesheet.css' does not match /background:\s#;/
     And folder 'website/_site' is not created
     And does invoke generator 'plain_theme'
     And output does not match /General Options:/
