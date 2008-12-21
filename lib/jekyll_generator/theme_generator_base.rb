@@ -3,6 +3,7 @@ class JekyllGenerator::ThemeGeneratorBase < RubiGen::Base
   # generated from jekyll_generator_generator.rb
   # based on options/defaults
   attr_reader :author, :email, :title, :name, :theme, :github_user, :header_color
+  attr_reader :hypenated_name
 
   def initialize(runtime_args, runtime_options = {})
     super
@@ -10,6 +11,8 @@ class JekyllGenerator::ThemeGeneratorBase < RubiGen::Base
     config_options.each do |key, value|
       self.send(:instance_variable_set, "@#{key}", value)
     end
+    
+    @hypenated_name = @name.gsub(/_/, '-')
   end
   
   def manifest

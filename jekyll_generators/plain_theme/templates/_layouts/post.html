@@ -30,7 +30,7 @@
           {{ content }}
                     
           <script type="text/javascript">var disqus_url = "http://<%= github_user %>.github.com/<%= name %>/{{ post.url }}"; var disqus_title ="{{ post.title }}";</script>
-          <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/<%= name %>/embed.js"></script>
+          <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/<%= hypenated_name %>/embed.js"></script>
           <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
           <script type="text/javascript">
           //<![CDATA[
@@ -42,7 +42,7 @@
           				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
           			}
           		}
-          		document.write('<script type="text/javascript" src="http://disqus.com/forums/<%= name %>/get_num_replies.js' + query + '"></' + 'script>');
+          		document.write('<script type="text/javascript" src="http://disqus.com/forums/<%= hypenated_name %>/get_num_replies.js' + query + '"></' + 'script>');
           	})();
           //]]>
           </script>
@@ -73,7 +73,7 @@
             </p>
           </div>
           <div class="item">
-            <script type="text/javascript" src="http://disqus.com/forums/<%= name %>/combination_widget.js?num_items=5&color=orange&default_tab=recent"></script>
+            <script type="text/javascript" src="http://disqus.com/forums/<%= hypenated_name %>/combination_widget.js?num_items=5&color=orange&default_tab=recent"></script>
           </div>
         </div>
       </div>
