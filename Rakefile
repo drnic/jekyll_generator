@@ -9,7 +9,7 @@ $hoe = Hoe.new('jekyll_generator', JekyllGenerator::VERSION) do |p|
   p.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   p.rubyforge_name       = 'drnicutilities'
   p.extra_deps         = [
-    ['rubigen', ">= #{::Rubigen::VERSION}"]
+    ['rubigen', ">= #{::RubiGen::VERSION}"]
   ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]

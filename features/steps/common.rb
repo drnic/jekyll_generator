@@ -68,7 +68,10 @@ end
 
 When %r{run local executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
-  system "ruby bin/#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+  executable = File.expand_path(File.join(File.dirname(__FILE__), "/../../bin", executable))
+  in_project_folder do
+    system "ruby #{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+  end
 end
 
 When %r{^task 'rake (.*)' is invoked$} do |task|

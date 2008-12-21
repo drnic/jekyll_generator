@@ -3,7 +3,11 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
+app_generators/jekyll_generator/USAGE
+app_generators/jekyll_generator/jekyll_generator_generator.rb
+bin/jekyll_generator
 features/development.feature
+features/jekyll.feature
 features/steps/common.rb
 features/steps/env.rb
 lib/jekyll_generator.rb
@@ -14,3 +18,5 @@ spec/jekyll_generator_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 tasks/rspec.rake
+test/test_generator_helper.rb
+test/test_jekyll_generator_generator.rb
