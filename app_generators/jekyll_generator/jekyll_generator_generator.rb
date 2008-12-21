@@ -29,6 +29,7 @@ class JekyllGeneratorGenerator < RubiGen::Base
       BASEDIRS.each { |path| m.directory path }
 
       m.template_copy_each ["index.markdown", "atom.xml", "config.yml"]
+      m.template "_posts/first_post.markdown", "_posts/#{Date.today.to_s}-first-post.markdown"
 
       m.dependency "#{theme}_theme", [], :destination => destination_root, :collision => :force
     end
