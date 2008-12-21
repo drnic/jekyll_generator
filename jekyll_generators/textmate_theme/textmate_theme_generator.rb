@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../lib/jekyll_generator/theme_generator_base'
+require File.dirname(__FILE__) + '/../../lib/jekyll_generator'
 class TextmateThemeGenerator < JekyllGenerator::ThemeGeneratorBase
   def manifest
     record do |m|

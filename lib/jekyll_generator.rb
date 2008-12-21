@@ -11,3 +11,4 @@ rescue LoadError
   require 'rubygems'
   require 'rubigen'
 end
+require 'jekyll_generator/theme_generator_base'
