@@ -14,7 +14,11 @@ When /^I create a blog post$/ do
 end
 
 Then /^blog post HTML file is created$/ do
+  file = "website/_site/2008/12/21/my-first-post.html"
   in_project_folder do
-    File.should be_exist("website/_site/2008/12/21/my-first-post.html")
+    File.should be_exist(file)
   end
+  Given "contents of file '#{file}' does match /<head>/"
+  Given "contents of file '#{file}' does match /<title>My first post</title>/"
+  Given "contents of file '#{file}' does match /This is my post/"
 end
