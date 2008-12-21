@@ -7,5 +7,9 @@ Feature: Generate a working Jekyll-based website
     Given a safe folder
     When I run local executable 'jekyll_generator' with arguments 'website'
     Then folder 'website' is created
-    Then folder 'website/_posts' is created
-  
+    And folder 'website/_posts' is created
+    And folder '_site' is not created
+    When I run executable 'jekyll' with arguments ''
+    Then folder '_site' is created
+    And file '_site/index.html' is created
+    

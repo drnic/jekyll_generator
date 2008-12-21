@@ -59,6 +59,13 @@ When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, argu
   end
 end
 
+When %r{run executable '(.*)' with arguments '(.*)'} do |executable, arguments|
+  @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
+  in_project_folder do
+    system "#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+  end
+end
+
 When %r{run project executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
@@ -81,9 +88,9 @@ When %r{^task 'rake (.*)' is invoked$} do |task|
   end
 end
 
-Then %r{^folder '(.*)' is created} do |folder|
+Then %r{^folder '(.*)' (is|is not) created} do |folder, is|
   in_project_folder do
-    File.exists?(folder).should be_true
+    File.exists?(folder).should(is == 'is' ? be_true : be_false)
   end
 end
 
