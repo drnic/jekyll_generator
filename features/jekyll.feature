@@ -4,10 +4,18 @@ Feature: Generate a working Jekyll-based website
   I want a Jekyll-based website generated
 
   Scenario: Generate a site with default theme
-    Given a safe folder
+    Given a project folder 'myproject'
     When I run local executable 'jekyll_generator' with arguments 'website'
+    And I make it a git repository with origin remote 'git@github.com:myname/myproject.git'
     Then folder 'website' is created
     And folder 'website/_posts' is created
+    And file 'website/index.markdown' is created
+    And contents of file 'website/atom.xml' does match /http:\/\/github.com\/myname\/myproject/
+    And file 'website/atom.xml' is created
+    And contents of file 'website/atom.xml' does match /http:\/\/myname.github.com\/myproject/
+    And file 'website/layouts/default.html' is created
+    And file 'website/layouts/post.html' is created
+    And file 'website/css/stylesheet.css' is created
     And folder '_site' is not created
     And does invoke generator 'plain_theme'
     And output does not match /General Options:/
@@ -16,10 +24,13 @@ Feature: Generate a working Jekyll-based website
     And file '_site/index.html' is created
     
   Scenario: Generate a site with textmate theme
-    Given a safe folder
+    Given a project folder 'myproject'
     When I run local executable 'jekyll_generator' with arguments 'website --theme textmate'
+    And I make it a git repository with origin remote 'git@github.com:myname/myproject.git'
     Then folder 'website' is created
-    And folder 'website/_posts' is created
+    And file 'website/layouts/default.html' is created
+    And file 'website/layouts/post.html' is created
+    And file 'website/css/macromates.css' is created
     And folder '_site' is not created
     And does invoke generator 'textmate_theme'
     And output does not match /General Options:/

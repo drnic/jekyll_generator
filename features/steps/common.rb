@@ -15,6 +15,12 @@ Given %r{^a safe folder} do
   Given "env variable $HOME set to '#{@home_path}'"
 end
 
+Given /a project folder '(.*)'/ do |project_folder|
+  Given "a safe folder"
+  @active_project_folder = File.expand_path(File.join(@tmp_root, project_folder))
+  FileUtils.mkdir_p @active_project_folder
+end  
+
 Given %r{^this project is active project folder} do
   Given "a safe folder"
   @active_project_folder = File.expand_path(File.dirname(__FILE__) + "/../..")
@@ -191,5 +197,15 @@ Then %r{^gem spec key '(.*)' contains \/(.*)\/} do |key, regex|
     gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
     spec_value = gem_spec.send(key.to_sym)
     spec_value.to_s.should match(/#{regex}/)
+  end
+end
+
+When /^I make it a git repository with origin remote '(.*)'$/ do |remote|
+  @stdout = File.expand_path(File.join(@tmp_root, "git.out"))
+  in_project_folder do
+    system "git init > #{@stdout}"
+    system "git add . > #{@stdout}"
+    system "git commit -m 'initial import' > #{@stdout}"
+    system "git remote add origin #{remote} > #{@stdout}"
   end
 end

@@ -2,7 +2,7 @@ class JekyllGeneratorGenerator < RubiGen::Base
 
   default_options :author => 'FIXME', :email => 'FIXME', :theme => 'plain'
 
-  attr_reader :author, :email, :title, :name, :theme
+  attr_reader :author, :email, :title, :name, :theme, :github_user
 
   def initialize(runtime_args, runtime_options = {})
     super
@@ -18,6 +18,8 @@ class JekyllGeneratorGenerator < RubiGen::Base
       # Ensure appropriate folder(s) exists
       m.directory ''
       BASEDIRS.each { |path| m.directory path }
+
+      m.template_copy_each ["index.markdown", "atom.xml"]
 
       m.dependency "#{theme}_theme", [], :destination => destination_root, :collision => :force
     end
@@ -43,6 +45,9 @@ EOS
       opts.on("-e", "--email=\"your@email.com\"", String,
               "Your email will be pre-populated throughout website",
               "Default: FIXME") { |v| options[:email] = v }
+      opts.on("-u", "--github_user=drnic", String,
+              "Your github user name",
+              "Default: derived from project's origin url") { |v| options[:github_user] = v }
       opts.on("--title=\"Your Project\"", String,
               "Your project's human title",
               "Default: current folder name") { |v| options[:title] = v }
@@ -65,8 +70,5 @@ EOS
     # created so don't sweat their absence here.
     BASEDIRS = %w(
       _posts
-      layouts
-      css
-      images
     )
 end
