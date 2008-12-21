@@ -1,3 +1,7 @@
+== 1.0.1 2008-12-22
+
+* Fixed manifest
+
 == 1.0.0 2008-12-21
 
 * 1 major enhancement:

@@ -5,6 +5,7 @@ README.rdoc
 Rakefile
 app_generators/jekyll_generator/USAGE
 app_generators/jekyll_generator/jekyll_generator_generator.rb
+app_generators/jekyll_generator/templates/_posts/first_post.markdown
 app_generators/jekyll_generator/templates/atom.xml
 app_generators/jekyll_generator/templates/config.yml
 app_generators/jekyll_generator/templates/index.markdown
@@ -31,3 +32,17 @@ spec/jekyll_generator_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 tasks/rspec.rake
+website/Rakefile
+website/_layouts/default.html
+website/_layouts/post.html
+website/_posts/2008-12-21-first-post.markdown
+website/_site/2008/12/21/first-post.html
+website/_site/Rakefile
+website/_site/atom.xml
+website/_site/config.yml
+website/_site/css/stylesheet.css
+website/_site/index.html
+website/atom.xml
+website/config.yml
+website/css/stylesheet.css
+website/index.markdown
