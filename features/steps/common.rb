@@ -62,22 +62,23 @@ end
 When %r{run executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
-    system "#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+    system "#{executable} #{arguments} > #{@stdout} 2>&1"
   end
 end
 
 When %r{run project executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
-    system "ruby #{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+    system "#{executable} #{arguments} > #{@stdout} 2>&1"
   end
 end
 
 When %r{run local executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
+  @stderr = File.expand_path(File.join(@tmp_root, "executable.err"))
   executable = File.expand_path(File.join(File.dirname(__FILE__), "/../../bin", executable))
   in_project_folder do
-    system "ruby #{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+    system "#{executable} #{arguments} > #{@stdout} 2> #{@stderr}"
   end
 end
 
@@ -121,7 +122,7 @@ Then %r{^output same as contents of '(.*)'$} do |file|
 end
 
 Then %r{^(does|does not) invoke generator '(.*)'$} do |does_invoke, generator|
-  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
+  actual_output = File.read(@stdout)
   does_invoke == "does" ?
     actual_output.should(match(/dependency\s+#{generator}/)) :
     actual_output.should_not(match(/dependency\s+#{generator}/))

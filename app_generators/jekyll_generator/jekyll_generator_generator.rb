@@ -1,8 +1,8 @@
 class JekyllGeneratorGenerator < RubiGen::Base
 
-  default_options :author => 'FIXME', :email => 'FIXME'
+  default_options :author => 'FIXME', :email => 'FIXME', :theme => 'plain'
 
-  attr_reader :author, :email, :title, :name
+  attr_reader :author, :email, :title, :name, :theme
 
   def initialize(runtime_args, runtime_options = {})
     super
@@ -19,11 +19,7 @@ class JekyllGeneratorGenerator < RubiGen::Base
       m.directory ''
       BASEDIRS.each { |path| m.directory path }
 
-      # Create stubs
-      # m.template "template.rb",  "some_file_after_erb.rb"
-      # m.template_copy_each ["template.rb", "template2.rb"]
-      # m.file     "file",         "some_file_copied"
-      # m.file_copy_each ["path/to/file", "path/to/file2"]
+      m.dependency "#{theme}_theme", [], :destination => destination_root, :collision => :force
     end
   end
 
@@ -47,17 +43,22 @@ EOS
       opts.on("-e", "--email=\"your@email.com\"", String,
               "Your email will be pre-populated throughout website",
               "Default: FIXME") { |v| options[:email] = v }
-      opts.on("-t", "--title=\"Your Project\"", String,
+      opts.on("--title=\"Your Project\"", String,
               "Your project's human title",
               "Default: current folder name") { |v| options[:title] = v }
+      opts.on("-t", "--theme=THEME", String,
+              "Initial layouts, css, images from a theme.",
+              "Available: plain, textmate",
+              "Default: plain") { |v| options[:theme] = v }
       opts.on("-v", "--version", "Show the #{File.basename($0)} version number and quit.")
     end
 
     def extract_options
-      # for each option, extract it into a local variable (and create an "attr_reader :author" at the top)
-      # Templates can access these value via the attr_reader-generated methods, but not the
-      # raw instance variable value.
-      # @author = options[:author]
+      @author = options[:author]
+      @email  = options[:email]
+      @theme  = options[:theme]
+
+      @title  = options[:title] if options[:title]
     end
 
     # Installation skeleton.  Intermediate directories are automatically
