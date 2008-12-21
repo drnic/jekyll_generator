@@ -4,13 +4,24 @@
  <title>jekyll_generator</title>
  <link href="http://drnic.github.com/jekyll_generator/atom.xml" rel="self"/>
  <link href="http://drnic.github.com/jekyll_generator/"/>
- <updated>2008-12-21T22:11:00+10:00</updated>
+ <updated>2008-12-21T22:24:20+10:00</updated>
  <id>http://drnic.github.com/jekyll_generator/</id>
  <author>
    <name>Dr Nic Williams</name>
    <email>drnicwilliams@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>The first post was generated</title>
+   <link href="http://drnic.github.com/jekyll_generator/2008/12/21/first-post.html"/>
+   <updated>2008-12-21T00:00:00+10:00</updated>
+   <id>http://drnic.github.com/jekyll_generator/2008/12/21/first-post</id>
+   <content type="html">&lt;p&gt;This project, &lt;a href="http://drnic.github.com/jekyll_generator"&gt;jekyll_generator&lt;/a&gt;, used itself to create its own website and blogging engine.&lt;/p&gt;
+
+&lt;p&gt;When you create a new website it creates the first post. This is that post!&lt;/p&gt;
+</content>
+ </entry>
  
  
 </feed>
