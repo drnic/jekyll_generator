@@ -32,9 +32,16 @@ Feature: Generate a working Jekyll-based website
     Given a project folder 'myproject'
     And I make it a git repository with origin remote 'git@github.com:myname/myproject.git'
     When I run local executable 'jekyll_generator' with arguments 'website --title "My Project"'
-    When I create a blog post
-    When I run executable 'jekyll' with arguments 'website website/_site'
+    And I create a blog post
+    And I run executable 'jekyll' with arguments 'website website/_site'
     Then blog post HTML file is created
+    
+  Scenario: Site with underscored name should have hyphenated disqus name
+    Given a project folder 'my_project'
+    And I make it a git repository with origin remote 'git@github.com:myname/my_project.git'
+    When I run local executable 'jekyll_generator' with arguments 'website --title "My Project"'
+    Then contents of file 'website/_layouts/default.html' does match /disqus.com\/forums\/my-project/
+    And contents of file 'website/_layouts/post.html' does match /disqus.com\/forums\/my-project/
     
   Scenario: Generate a site with textmate theme
     Given a project folder 'myproject'
