@@ -1,8 +1,8 @@
 class JekyllGeneratorGenerator < RubiGen::Base
 
-  default_options :author => 'FIXME', :email => 'FIXME', :theme => 'plain'
+  default_options :theme => 'plain'
 
-  attr_reader :author, :email, :title, :name, :theme, :github_user, :header_color
+  attr_reader :title, :name, :theme, :github_user, :header_color
 
   def initialize(runtime_args, runtime_options = {})
     super
@@ -48,18 +48,9 @@ EOS
       opts.separator 'Options:'
       # For each option below, place the default
       # at the top of the file next to "default_options"
-      opts.on("-a", "--author=\"Your Name\"", String,
-              "Your name will be pre-populated throughout website",
-              "Default: FIXME") { |v| options[:author] = v }
-      opts.on("-e", "--email=\"your@email.com\"", String,
-              "Your email will be pre-populated throughout website",
-              "Default: FIXME") { |v| options[:email] = v }
       opts.on("--header-color=rrggbb", String,
               "Color for your theme's header (if theme permits header color selection)",
               "Default: random") { |v| options[:header_color] = v }
-      opts.on("-u", "--github_user=drnic", String,
-              "Your github user name",
-              "Default: derived from project's origin url") { |v| options[:github_user] = v }
       opts.on("--title=\"Your Project\"", String,
               "Your project's human title",
               "Default: current folder name") { |v| options[:title] = v }
@@ -71,8 +62,6 @@ EOS
     end
 
     def extract_options
-      @author       = options[:author]
-      @email        = options[:email]
       @theme        = options[:theme]
       @header_color = options[:header_color]
       @title        = options[:title]
