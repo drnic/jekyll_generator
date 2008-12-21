@@ -1,10 +1,10 @@
 = jekyll_generator
 
-* FIX (url)
+* http://drnic.github.com/jekyll_generator
 
 == DESCRIPTION:
 
-FIX (describe your package)
+A nice generator for a Jekyll website including Disqus comments integration
 
 == FEATURES/PROBLEMS:
 
@@ -16,11 +16,14 @@ FIX (describe your package)
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* jekyll - this is not installed with jekyll_generator itself
+
+    sudo gem source http://gems.github.com/
+    sudo gem install mojombo-jekyll
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+    sudo gem install jekyll_generator
 
 == LICENSE:
 
