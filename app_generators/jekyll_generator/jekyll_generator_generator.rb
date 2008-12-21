@@ -10,6 +10,10 @@ class JekyllGeneratorGenerator < RubiGen::Base
     @destination_root = File.expand_path(args.shift)
     @name             = base_name
     @title            = base_name.humanize
+    remote_origin_url = `git config remote.origin.url`
+    if remote_origin_url.size > 0 && matches = remote_origin_url.match(/git@github.com:(.*)\/(.*).git/)
+      @github_user, @name = matches[1..2]
+    end
     extract_options
   end
 

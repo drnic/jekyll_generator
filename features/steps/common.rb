@@ -202,10 +202,11 @@ end
 
 When /^I make it a git repository with origin remote '(.*)'$/ do |remote|
   @stdout = File.expand_path(File.join(@tmp_root, "git.out"))
+  @stderr = File.expand_path(File.join(@tmp_root, "git.err"))
   in_project_folder do
-    system "git init > #{@stdout}"
-    system "git add . > #{@stdout}"
-    system "git commit -m 'initial import' > #{@stdout}"
-    system "git remote add origin #{remote} > #{@stdout}"
+    system "git init > #{@stdout} 2> #{@stderr}"
+    system "git add . > #{@stdout} 2> #{@stderr}"
+    system "git commit -m 'initial import' > #{@stdout} 2> #{@stderr}"
+    system "git remote add origin #{remote} > #{@stdout} 2> #{@stderr}"
   end
 end
