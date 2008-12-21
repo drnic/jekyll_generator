@@ -69,7 +69,6 @@ EOS
     
     def random_color
       colors = ['aaa', # light grey
-        'C7E9B7', # background from http://jsunittest.com/
         '8DBD82', # background from http://newgem.rubyforge.org/
         'E9C000', # background from http://drnicjavascript.rubyforge.org/github_badge/
         '4D606C', # header background from http://disqus.com/people/drnic/
