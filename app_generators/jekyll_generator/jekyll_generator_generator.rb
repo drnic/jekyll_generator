@@ -10,11 +10,14 @@ class JekyllGeneratorGenerator < RubiGen::Base
     @destination_root = File.expand_path(args.shift)
     @name             = base_name
     @title            = base_name.humanize
+    extract_options
+
     remote_origin_url = `git config remote.origin.url`
     if remote_origin_url.size > 0 && matches = remote_origin_url.match(/git@github.com:(.*)\/(.*).git/)
       @github_user, @name = matches[1..2]
+      options[:github_user] ||= @github_user
     end
-    extract_options
+    options[:name] ||= @name
   end
 
   def manifest
@@ -23,7 +26,7 @@ class JekyllGeneratorGenerator < RubiGen::Base
       m.directory ''
       BASEDIRS.each { |path| m.directory path }
 
-      m.template_copy_each ["index.markdown", "atom.xml"]
+      m.template_copy_each ["index.markdown", "atom.xml", "config.yml"]
 
       m.dependency "#{theme}_theme", [], :destination => destination_root, :collision => :force
     end

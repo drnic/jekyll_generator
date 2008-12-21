@@ -9,21 +9,19 @@
   </head>
   <body id="intro">
     <div id="wrapper">
-      <div id="header" onclick="javascript:window.location='/macruby-tmbundle/'">
-        <h1>
-          MacRuby.tmbundle - TextMate bundle for MacRuby
-        </h1>
+      <div id="header" onclick="javascript:window.location='/<%= name %>/'">
+        <h1><%= title %></h1>
       </div>
       <div id="navigation">
         <ul>
           <li id="navi_intro">
-            <a href="/macruby-tmbundle/">Intro</a>
+            <a href="/<%= name %>/">Intro</a>
           </li>
           <li id="navi_source">
-            <a href="http://github.com/drnic/macruby-tmbundle">Source</a>
+            <a href="http://github.com/<%= github_user %>/<%= name %>">Source</a>
           </li>
           <li id="navi_tickets">
-            <a href="http://drnic.lighthouseapp.com/projects/22212-tmbundles/tickets?q=tagged%3Amacruby">Tickets</a>
+            <a href="http://<%= github_user %>.lighthouseapp.com/projects/TODO/tickets">Tickets</a>
           </li>
           <li id="navi_textmate">
             <a href="http://www.macromates.com/">TextMate</a>
@@ -37,8 +35,8 @@
         <div id="content">
           {{ content }}
                     
-          <script type="text/javascript">var disqus_url = "http://drnic.github.com/macruby-tmbundle/{{ post.url }}"; var disqus_title ="{{ post.title }}";</script>
-          <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/macruby-tmbundle/embed.js"></script>
+          <script type="text/javascript">var disqus_url = "http://<%= github_user %>.github.com/<%= name %>/{{ post.url }}"; var disqus_title ="{{ post.title }}";</script>
+          <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/<%= name %>/embed.js"></script>
           <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
           <script type="text/javascript">
           //<![CDATA[
@@ -50,7 +48,7 @@
           				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
           			}
           		}
-          		document.write('<script type="text/javascript" src="http://disqus.com/forums/macruby-tmbundle/get_num_replies.js' + query + '"></' + 'script>');
+          		document.write('<script type="text/javascript" src="http://disqus.com/forums/<%= name %>/get_num_replies.js' + query + '"></' + 'script>');
           	})();
           //]]>
           </script>
@@ -65,7 +63,7 @@
           </div>
           <div class="item">
             <!-- Tickets   -->
-            <a href="http://drnic.lighthouseapp.com/projects/22212-tmbundles/tickets?q=tagged%3Amacruby" id="tickets" name="tickets">Tickets</a>
+            <a href="http://<%= github_user %>.lighthouseapp.com/projects/TODO/tickets" id="tickets" name="tickets">Tickets</a>
             <h4>Tickets</h4>
             <p>
               Found a bug?<br />
@@ -83,14 +81,14 @@
             </p>
           </div>
           <div class="item">
-            <script type="text/javascript" src="http://disqus.com/forums/macruby-tmbundle/combination_widget.js?num_items=5&color=orange&default_tab=recent"></script>
+            <script type="text/javascript" src="http://disqus.com/forums/<%= name %>/combination_widget.js?num_items=5&color=orange&default_tab=recent"></script>
           </div>
         </div>
       </div>
       <div id="footer">
-        <p><a href="http://github.com/drnic/macruby-tmbundle/tree/gh-pages" title="drnic's macruby-tmbundle at gh-pages &mdash; GitHub">website source</a> | TextMate is awesome | MacRuby is awesome | <a href="http://drnicwilliams.com/" title="Dr Nic">Dr Nic</a> @ <a href="http://mocra.com" title="Mocra - the premier iPhone/Rails consultancy">Mocra</a></p>
+        <p><a href="http://github.com/<%= github_user %>/<%= name %>/tree/gh-pages" title="<%= github_user %>'s <%= name %> at gh-pages &mdash; GitHub">website source</a> | TextMate is awesome</p>
       </div>
     </div>
-    <a href="http://github.com/drnic/macruby-tmbundle"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <a href="http://github.com/<%= github_user %>/<%= name %>"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
   </body>
 </html>

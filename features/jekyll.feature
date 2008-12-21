@@ -6,7 +6,7 @@ Feature: Generate a working Jekyll-based website
   Scenario: Generate a site with default theme
     Given a project folder 'myproject'
     And I make it a git repository with origin remote 'git@github.com:myname/myproject.git'
-    When I run local executable 'jekyll_generator' with arguments 'website'
+    When I run local executable 'jekyll_generator' with arguments 'website --title "My Project"'
     Then folder 'website' is created
     And folder 'website/_posts' is created
     And file 'website/index.markdown' is created
@@ -14,7 +14,11 @@ Feature: Generate a working Jekyll-based website
     And file 'website/atom.xml' is created
     And contents of file 'website/atom.xml' does match /http:\/\/myname.github.com\/myproject/
     And file 'website/layouts/default.html' is created
+    And contents of file 'website/layouts/default.html' does match /My Project/
+    And contents of file 'website/layouts/default.html' does match /http:\/\/github.com\/myname\/myproject/
     And file 'website/layouts/post.html' is created
+    And contents of file 'website/layouts/default.html' does match /My Project/
+    And contents of file 'website/layouts/post.html' does match /http:\/\/github.com\/myname\/myproject/
     And file 'website/css/stylesheet.css' is created
     And folder 'website/_site' is not created
     And does invoke generator 'plain_theme'
@@ -26,10 +30,14 @@ Feature: Generate a working Jekyll-based website
   Scenario: Generate a site with textmate theme
     Given a project folder 'myproject'
     And I make it a git repository with origin remote 'git@github.com:myname/myproject.git'
-    When I run local executable 'jekyll_generator' with arguments 'website --theme textmate'
+    When I run local executable 'jekyll_generator' with arguments 'website --theme textmate --title "My Project"'
     Then folder 'website' is created
     And file 'website/layouts/default.html' is created
+    And contents of file 'website/layouts/default.html' does match /My Project/
+    And contents of file 'website/layouts/default.html' does match /http:\/\/github.com\/myname\/myproject/
     And file 'website/layouts/post.html' is created
+    And contents of file 'website/layouts/default.html' does match /My Project/
+    And contents of file 'website/layouts/post.html' does match /http:\/\/github.com\/myname\/myproject/
     And file 'website/css/macromates.css' is created
     And folder 'website/_site' is not created
     And does invoke generator 'textmate_theme'

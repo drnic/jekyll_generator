@@ -1,0 +1,1 @@
+<%= options.reject {|name, value| [:stdout, :command, :quiet, :collision, :generator].include? name}.to_yaml %>
