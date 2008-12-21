@@ -4,15 +4,22 @@
 
 == DESCRIPTION:
 
-A nice generator for a Jekyll website including Disqus comments integration
+A nice generator for a Jekyll website including Disqus comments integration. Probably tightly integrated to github and Github Pages. Will be relaxed later.
 
-== FEATURES/PROBLEMS:
+== EXAMPLES:
 
-* FIX (list of features or problems)
+* http://drnic.github.com/macruby-tmbundle
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+    cd to/your/project
+    jekyll_generator website --title "Name of Project"
+    cd website
+    jekyll
+    open _site/index.html
+
+It is assumed that your project is already a git repository stored on github. The generators
+all use this assumption to derive information about the project.
 
 == REQUIREMENTS:
 
@@ -29,7 +36,7 @@ A nice generator for a Jekyll website including Disqus comments integration
 
 (The MIT License)
 
-Copyright (c) 2008 FIXME full name
+Copyright (c) 2008 Dr Nic Williams, http://drnicwilliams, http://mocra.com
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
