@@ -27,6 +27,14 @@ Feature: Generate a working Jekyll-based website
     When I run executable 'jekyll' with arguments 'website website/_site'
     Then folder 'website/_site' is created
     And file 'website/_site/index.html' is created
+  
+  Scenario: Site with default theme has posts
+    Given a project folder 'myproject'
+    And I make it a git repository with origin remote 'git@github.com:myname/myproject.git'
+    When I run local executable 'jekyll_generator' with arguments 'website --title "My Project"'
+    When I create a blog post
+    When I run executable 'jekyll' with arguments 'website website/_site'
+    Then blog post HTML file is created
     
   Scenario: Generate a site with textmate theme
     Given a project folder 'myproject'
@@ -47,3 +55,10 @@ Feature: Generate a working Jekyll-based website
     Then folder 'website/_site' is created
     And file 'website/_site/index.html' is created
 
+  Scenario: Site with default theme has posts
+    Given a project folder 'myproject'
+    And I make it a git repository with origin remote 'git@github.com:myname/myproject.git'
+    When I run local executable 'jekyll_generator' with arguments 'website --theme textmate --title "My Project"'
+    When I create a blog post
+    When I run executable 'jekyll' with arguments 'website website/_site'
+    Then blog post HTML file is created
