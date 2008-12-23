@@ -9,6 +9,8 @@ app_generators/jekyll_generator/templates/_posts/first_post.markdown
 app_generators/jekyll_generator/templates/atom.xml
 app_generators/jekyll_generator/templates/config.yml
 app_generators/jekyll_generator/templates/index.markdown
+app_generators/jekyll_generator/templates/_posts
+app_generators/jekyll_generator/templates/_posts/first_post.markdown
 bin/jekyll_generator
 features/development.feature
 features/jekyll.feature
@@ -32,6 +34,7 @@ spec/jekyll_generator_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 tasks/rspec.rake
+<<<<<<< HEAD:Manifest.txt
 website/Rakefile
 website/_layouts/default.html
 website/_layouts/post.html
@@ -46,3 +49,6 @@ website/atom.xml
 website/config.yml
 website/css/stylesheet.css
 website/index.markdown
+=======
+
+>>>>>>> d192a214626e2c152cf252000d0697dcf7f5eb80:Manifest.txt
