@@ -1,3 +1,7 @@
+== 1.0.2 2008-12-23
+
+* Added setup information in template index.markdown for Disqus and Lighthouse
+
 == 1.0.1 2008-12-22
 
 * Fixed manifest
